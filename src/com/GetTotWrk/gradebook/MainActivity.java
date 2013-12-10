@@ -68,17 +68,24 @@ ActionBar.TabListener {
 			//			dbcourse = dbhelpercoursename.getWritableDatabase();
 			course = new Course(getActivity());
 			Log.w(TAG, "COURSES ");
-			final TextView message3_1 = (TextView) rootView.findViewById(R.id.textview3_1);
-			final TextView message2_1 = (TextView) rootView.findViewById(R.id.textview2_1);
 			final TextView message1_1 = (TextView) rootView.findViewById(R.id.textview1_1);
-
-			final TextView message3_2 = (TextView) rootView.findViewById(R.id.textview3_2);
-			final TextView message2_2 = (TextView) rootView.findViewById(R.id.textview2_2);
 			final TextView message1_2 = (TextView) rootView.findViewById(R.id.textview1_2);
-
-			final TextView message3_3 = (TextView) rootView.findViewById(R.id.textview3_3);
-			final TextView message2_3 = (TextView) rootView.findViewById(R.id.textview2_3);
 			final TextView message1_3 = (TextView) rootView.findViewById(R.id.textview1_3);
+			final TextView message1_4 = (TextView) rootView.findViewById(R.id.textview1_4);
+			final TextView message1_5 = (TextView) rootView.findViewById(R.id.textview1_5);
+
+
+			final TextView message2_1 = (TextView) rootView.findViewById(R.id.textview2_1);
+			final TextView message2_2 = (TextView) rootView.findViewById(R.id.textview2_2);
+			final TextView message2_3 = (TextView) rootView.findViewById(R.id.textview2_3);
+			final TextView message2_4 = (TextView) rootView.findViewById(R.id.textview2_4);
+			final TextView message2_5 = (TextView) rootView.findViewById(R.id.textview2_5);
+
+			final TextView message3_1 = (TextView) rootView.findViewById(R.id.textview3_1);
+			final TextView message3_2 = (TextView) rootView.findViewById(R.id.textview3_2);
+			final TextView message3_3 = (TextView) rootView.findViewById(R.id.textview3_3);
+			final TextView message3_4 = (TextView) rootView.findViewById(R.id.textview3_4);
+			final TextView message3_5 = (TextView) rootView.findViewById(R.id.textview3_5);
 
 			Button updategrade = (Button) rootView.findViewById(R.id.updategrade);
 			updategrade.setOnClickListener(new OnClickListener(){
@@ -89,31 +96,42 @@ ActionBar.TabListener {
 					message2_1.setText(String.format("%.2f", course.CourseHighestGrade(1)));
 					message3_2.setText(String.format("%.2f", course.CourseGrade(2)));
 					message2_2.setText(String.format("%.2f", course.CourseHighestGrade(2)));
-					message3_3.setText(String.format("%.2f", course.CourseGrade(2)));
-					message2_3.setText(String.format("%.2f", course.CourseHighestGrade(2)));
+					message3_3.setText(String.format("%.2f", course.CourseGrade(3)));
+					message2_3.setText(String.format("%.2f", course.CourseHighestGrade(3)));
+					message3_4.setText(String.format("%.2f", course.CourseGrade(4)));
+					message2_4.setText(String.format("%.2f", course.CourseHighestGrade(4)));
+					message3_5.setText(String.format("%.2f", course.CourseGrade(5)));
+					message2_5.setText(String.format("%.2f", course.CourseHighestGrade(5)));
+
 					message1_1.setText(course.GetCourseName(1));
 					message1_2.setText(course.GetCourseName(2));
 					message1_3.setText(course.GetCourseName(3));
+					message1_4.setText(course.GetCourseName(4));
+					message1_5.setText(course.GetCourseName(5));
+
+
 				}
 
 			});
 			course.open();
 			Log.w(TAG, "COURSES OPEN");
-
-			//message1
-			//			String[] columns = {DBHelperCourseName.COURSE};
-			//			String text;
-			//			Cursor cursor = dbcourse.query(dbhelpercoursename.TABLE_NAME, columns, null, null, null, null, null); 
-			//			cursor.moveToFirst();
-			message1_1.setText(course.GetCourseName(1));
-			message1_2.setText(course.GetCourseName(2));
-			message1_3.setText(course.GetCourseName(3));
 			message3_1.setText(String.format("%.2f", course.CourseGrade(1)));
 			message2_1.setText(String.format("%.2f", course.CourseHighestGrade(1)));
 			message3_2.setText(String.format("%.2f", course.CourseGrade(2)));
 			message2_2.setText(String.format("%.2f", course.CourseHighestGrade(2)));
-			message3_3.setText(String.format("%.2f", course.CourseGrade(2)));
-			message2_3.setText(String.format("%.2f", course.CourseHighestGrade(2)));
+			message3_3.setText(String.format("%.2f", course.CourseGrade(3)));
+			message2_3.setText(String.format("%.2f", course.CourseHighestGrade(3)));
+			message3_4.setText(String.format("%.2f", course.CourseGrade(4)));
+			message2_4.setText(String.format("%.2f", course.CourseHighestGrade(4)));
+			message3_5.setText(String.format("%.2f", course.CourseGrade(5)));
+			message2_5.setText(String.format("%.2f", course.CourseHighestGrade(5)));
+
+			message1_1.setText(course.GetCourseName(1));
+			message1_2.setText(course.GetCourseName(2));
+			message1_3.setText(course.GetCourseName(3));
+			message1_4.setText(course.GetCourseName(4));
+			message1_5.setText(course.GetCourseName(5));
+
 
 
 
@@ -143,52 +161,7 @@ ActionBar.TabListener {
 	static Double weight;
 	static Double weightdouble,totalscoredouble,rawscoredouble;
 	static Double num;
-	public boolean onOptionsItemSelected(MenuItem item){
-		switch (item.getItemId()){
-		case R.id.create_course:
-			//Toast.makeText(this, ,Toast.LENGTH_LONG).show();
-			//cust = (Button) root.findViewById(R.id.textview1_3);
-			//txt = (TextView) root.findViewById(R.id.textview2_3);
-			custom = new Dialog(MainActivity.this);
-			custom.setContentView(R.layout.dialog);
-			Lname = (EditText)custom.findViewById(R.id.spinner);
-			savebtn = (Button)custom.findViewById(R.id.savebtn);
-			canbtn = (Button)custom.findViewById(R.id.canbtn);
-			custom.setTitle("Custom Dialog");
-			savebtn.setOnClickListener(new View.OnClickListener() {
 
-				@Override
-				public void onClick(View view) {
-					// TODO Auto-generated method stub
-					//Toast.makeText(getCallingActivity(), "Create Course",Toast.LENGTH_LONG).show();
-
-					//txt.setText("Your Name is "+fname +lname);
-					custom.dismiss();
-				}
-
-			});
-			canbtn.setOnClickListener(new View.OnClickListener() {
-
-				@Override
-				public void onClick(View view) {
-					// TODO Auto-generated method stub
-					custom.dismiss();
-
-				}
-			});
-			custom.show();
-
-
-			return true;
-		case R.id.action_settings:
-			return true;
-
-		default:
-			return super.onOptionsItemSelected(item);
-
-
-		}
-	}
 	SectionsPagerAdapter mSectionsPagerAdapter;
 
 	/**
@@ -378,6 +351,7 @@ ActionBar.TabListener {
 					cursor = course.fetchAssignmentsbyName("1"); //HardCoded
 					adapter.swapCursor(cursor);
 					list.setAdapter(adapter);
+					Toast.makeText(getActivity(),"Course List updated",Toast.LENGTH_LONG).show();
 
 				}
 
@@ -396,6 +370,7 @@ ActionBar.TabListener {
 						@Override
 						public void onClick(View arg0) {
 							course.remove(1); //HardCoded
+							Toast.makeText(getActivity(),"All course entries deleted",Toast.LENGTH_LONG).show();
 
 						}
 
@@ -425,6 +400,7 @@ ActionBar.TabListener {
 								public void onClick(View v) {
 									secondary.dismiss();
 									custom.show();
+
 								}
 							});
 							save.setOnClickListener(new View.OnClickListener() {
@@ -434,6 +410,8 @@ ActionBar.TabListener {
 									String coursnametext = coursename.getText().toString();
 									course.courseNameUpdate(1,coursnametext);
 									secondary.dismiss();
+									Toast.makeText(getActivity(),"Assignments added",Toast.LENGTH_LONG).show();
+
 									custom.show();
 								}
 							});
@@ -475,22 +453,30 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Homework", "1", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+											Toast.makeText(getActivity(),"Error: assignments not added",Toast.LENGTH_LONG).show();
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Homework", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											Toast.makeText(getActivity(),"Assignments added",Toast.LENGTH_LONG).show();
+											secondary.dismiss();
+											custom.show();}}
 								}
 							});
 						}
@@ -527,22 +513,33 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Essay", "1", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+											Toast.makeText(getActivity(),"Error: assignments not added",Toast.LENGTH_LONG).show();
+
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Essay", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											Toast.makeText(getActivity(),"Assignments added",Toast.LENGTH_LONG).show();
+
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -579,22 +576,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Exam", "1", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Exam", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -630,22 +634,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Lab", "1", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Lab", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -681,22 +692,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Pre-lab", "1", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Pre-lab", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -732,22 +750,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Project", "1", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Project", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -782,22 +807,31 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Quiz", "1", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Quiz", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();
+										}
+									}
+
 								}
 							});
 						}
@@ -833,24 +867,33 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Program", "1", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Program", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
-							});						}
+							});					
+						}
 					});
 					Button button3_3 = (Button)custom.findViewById(R.id.button3_3);
 					button3_3.setOnClickListener(new View.OnClickListener() {
@@ -882,39 +925,35 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Other", "1", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Other", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
-							});						}
+							});						
+
+						}
 					});
-					Button canbtn = (Button)custom.findViewById(R.id.canbtn);
 
-
-
-
-					//					canbtn.setOnClickListener(new View.OnClickListener() {
-					//
-					//						@Override
-					//						public void onClick(View view) {
-					//							// TODO Auto-generated method stub
-					//							custom.dismiss();
-					//
-					//						}
-					//					});
 					custom.show();
 				}
 
@@ -1086,7 +1125,9 @@ ActionBar.TabListener {
 
 						@Override
 						public void onClick(View arg0) {
-						    course.remove(2); //HardCoded
+							course.remove(2); //HardCoded
+							Toast.makeText(getActivity(),"All course entries deleted",Toast.LENGTH_LONG).show();
+
 
 						}
 
@@ -1166,22 +1207,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Homework", "2", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Homework", "2", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -1218,22 +1266,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Essay", "2", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Essay", "2", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -1270,22 +1325,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Exam", "2", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Exam", "2", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -1317,26 +1379,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Lab", "2", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Lab", "2", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -1368,26 +1437,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Pre-lab", "2", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Pre-lab", "2", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -1419,26 +1495,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Project", "2", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Project", "2", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -1469,26 +1552,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Quiz", "2", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Quiz", "2", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -1497,7 +1587,7 @@ ActionBar.TabListener {
 					button2_3.setOnClickListener(new View.OnClickListener() {
 						@Override
 						public void onClick(View view) {
-						custom.hide();
+							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
 							secondary.setTitle("Add or Edit Assignment Type");
@@ -1520,26 +1610,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Program", "2", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Program", "2", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});						}
 					});
@@ -1569,43 +1666,37 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Other", "2", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Other", "2", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});						}
 					});
-					Button canbtn = (Button)custom.findViewById(R.id.canbtn);
 
-
-
-
-					//					canbtn.setOnClickListener(new View.OnClickListener() {
-					//
-					//						@Override
-					//						public void onClick(View view) {
-					//							// TODO Auto-generated method stub
-					//							custom.dismiss();
-					//
-					//						}
-					//					});
 					custom.show();
 				}
 
@@ -1777,7 +1868,8 @@ ActionBar.TabListener {
 
 						@Override
 						public void onClick(View arg0) {
-						    course.remove(3); //HardCoded
+							course.remove(3); //HardCoded
+							Toast.makeText(getActivity(),"All course entries deleted",Toast.LENGTH_LONG).show();
 
 						}
 
@@ -1857,22 +1949,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Homework", "3", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Homework", "3", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -1909,22 +2008,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Essay", "3", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Essay", "3", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -1961,22 +2067,31 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Exam", "3", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Exam", "3", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2008,26 +2123,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Lab", "3", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Lab", "3", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2059,26 +2181,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Pre-lab", "3", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Pre-lab", "3", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2110,26 +2239,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Project", "3", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Project", "3", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2160,26 +2296,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Quiz", "3", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Quiz", "3", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2188,7 +2331,7 @@ ActionBar.TabListener {
 					button2_3.setOnClickListener(new View.OnClickListener() {
 						@Override
 						public void onClick(View view) {
-						custom.hide();
+							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
 							secondary.setTitle("Add or Edit Assignment Type");
@@ -2211,26 +2354,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Program", "3", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Program", "3", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});						}
 					});
@@ -2260,7 +2410,7 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
@@ -2283,20 +2433,7 @@ ActionBar.TabListener {
 								}
 							});						}
 					});
-					Button canbtn = (Button)custom.findViewById(R.id.canbtn);
 
-
-
-
-					//					canbtn.setOnClickListener(new View.OnClickListener() {
-					//
-					//						@Override
-					//						public void onClick(View view) {
-					//							// TODO Auto-generated method stub
-					//							custom.dismiss();
-					//
-					//						}
-					//					});
 					custom.show();
 				}
 
@@ -2468,7 +2605,8 @@ ActionBar.TabListener {
 
 						@Override
 						public void onClick(View arg0) {
-						    course.remove(4); //HardCoded
+							course.remove(4); //HardCoded
+							Toast.makeText(getActivity(),"All course entries deleted",Toast.LENGTH_LONG).show();
 
 						}
 
@@ -2548,22 +2686,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Homework", "4", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Homework", "4", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2600,22 +2745,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Essay", "4", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Essay", "4", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2652,22 +2804,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Exam", "4", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Exam", "4", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2699,26 +2858,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Lab", "4", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Lab", "4", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2750,26 +2916,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Pre-lab", "4", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Pre-lab", "4", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2801,26 +2974,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Project", "4", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Project", "4", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2851,26 +3031,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Quiz", "4", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Quiz", "4", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -2879,7 +3066,7 @@ ActionBar.TabListener {
 					button2_3.setOnClickListener(new View.OnClickListener() {
 						@Override
 						public void onClick(View view) {
-						custom.hide();
+							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
 							secondary.setTitle("Add or Edit Assignment Type");
@@ -2902,26 +3089,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Program", "4", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Program", "4", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});						}
 					});
@@ -2951,43 +3145,36 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Other", "4", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Other", "4", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});						}
 					});
-					Button canbtn = (Button)custom.findViewById(R.id.canbtn);
-
-
-
-
-					//					canbtn.setOnClickListener(new View.OnClickListener() {
-					//
-					//						@Override
-					//						public void onClick(View view) {
-					//							// TODO Auto-generated method stub
-					//							custom.dismiss();
-					//
-					//						}
-					//					});
 					custom.show();
 				}
 
@@ -3159,7 +3346,8 @@ ActionBar.TabListener {
 
 						@Override
 						public void onClick(View arg0) {
-						    course.remove(5); //HardCoded
+							course.remove(5); //HardCoded
+							Toast.makeText(getActivity(),"All course entries deleted",Toast.LENGTH_LONG).show();
 
 						}
 
@@ -3239,22 +3427,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Homework", "5", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Homework", "5", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -3291,22 +3486,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Essay", "5", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Essay", "5", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -3343,22 +3545,29 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Exam", "5", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Exam", "5", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -3390,26 +3599,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Lab", "5", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Lab", "5", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -3441,26 +3657,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Pre-lab", "5", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Pre-lab", "5", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -3492,26 +3715,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Project", "5", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Project", "5", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -3542,26 +3772,33 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									assnum = Integer.parseInt(assignmentnum1.getText().toString());
-									weight = Double.parseDouble(assignmentweight1.getText().toString());
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
 
-									if (weight <= 0 || weight > 1 || assnum <= 0  ){
-										Log.w(TAG, "Min Conditions not met");
-										Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
-										Log.w(TAG, "weight" + assignmentweight1.getText().toString());
-
-
-									}
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
 									else{
-										Log.w(TAG, "Min Conditions met");
-										course.createcourseassignment("Quiz", "5", weight,assnum); //HardCoded
-										Log.w(TAG, "Course Assignment Saved");
-										secondary.dismiss();
-										custom.show();}
+										assnum = Integer.parseInt(assignmentnum1.getText().toString());
+										weight = Double.parseDouble(assignmentweight1.getText().toString());
+
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+											Log.w(TAG, "Min Conditions not met");
+											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
+											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
+
+
+										}
+										else{
+											Log.w(TAG, "Min Conditions met");
+											course.createcourseassignment("Quiz", "5", weight,assnum); //HardCoded
+											Log.w(TAG, "Course Assignment Saved");
+											secondary.dismiss();
+											custom.show();}
+									}
 								}
 							});
 						}
@@ -3570,7 +3807,7 @@ ActionBar.TabListener {
 					button2_3.setOnClickListener(new View.OnClickListener() {
 						@Override
 						public void onClick(View view) {
-						custom.hide();
+							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
 							secondary.setTitle("Add or Edit Assignment Type");
@@ -3593,10 +3830,16 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
+
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
+									else{
 									assnum = Integer.parseInt(assignmentnum1.getText().toString());
 									weight = Double.parseDouble(assignmentweight1.getText().toString());
 
@@ -3613,6 +3856,7 @@ ActionBar.TabListener {
 										Log.w(TAG, "Course Assignment Saved");
 										secondary.dismiss();
 										custom.show();}
+								}
 								}
 							});						}
 					});
@@ -3642,10 +3886,16 @@ ActionBar.TabListener {
 									custom.show();
 								}
 							});
-														save.setOnClickListener(new View.OnClickListener() {
+							save.setOnClickListener(new View.OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
+									String assignmentnumstr = assignmentnum1.getText().toString();
+									String assignmentweightstr = assignmentnum1.getText().toString();
+
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
+									else{
 									assnum = Integer.parseInt(assignmentnum1.getText().toString());
 									weight = Double.parseDouble(assignmentweight1.getText().toString());
 
@@ -3663,22 +3913,10 @@ ActionBar.TabListener {
 										secondary.dismiss();
 										custom.show();}
 								}
+								}
 							});						}
 					});
-					Button canbtn = (Button)custom.findViewById(R.id.canbtn);
-
-
-
-
-					//					canbtn.setOnClickListener(new View.OnClickListener() {
-					//
-					//						@Override
-					//						public void onClick(View view) {
-					//							// TODO Auto-generated method stub
-					//							custom.dismiss();
-					//
-					//						}
-					//					});
+					
 					custom.show();
 				}
 
@@ -3702,8 +3940,18 @@ ActionBar.TabListener {
 					Button canbtn = (Button)custom.findViewById(R.id.canbtn);
 					final EditText totalscore = (EditText) custom.findViewById(R.id.totalscore);
 					final EditText rawscore = (EditText) custom.findViewById(R.id.rawscore);
+					final Button erase = (Button) custom.findViewById(R.id.delete);
+
+					erase.setOnClickListener(new View.OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							course.tabledelete(cursor2);
+							custom.dismiss();
 
 
+						}
+					});
 					savebtn.setOnClickListener(new View.OnClickListener() {
 
 

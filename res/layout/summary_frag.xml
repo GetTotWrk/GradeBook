@@ -19,8 +19,66 @@
             android:layout_height="wrap_content"
             android:background="@drawable/back"
             android:fillViewport="true"
-            android:gravity="center_vertical"
+            android:layout_gravity="left|center_vertical" 
             android:text="Update Grades" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#99ccff"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#99ccff"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/updategrade"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Course Name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#99ccff"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/updategrade"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:text="Highest Possible Grade" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#99ccff"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/updategrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:text="Current Grade" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -86,6 +144,46 @@
                 android:background="@drawable/back"
                 android:gravity="center_vertical"
                 android:text="Test 1" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:bottom="50dp"
+                android:top="50dp" />
+
+            <TextView
+                android:id="@+id/textview1_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/back"
+                android:gravity="center_vertical"
+                android:text="Test 1" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:bottom="50dp"
+                android:top="50dp" />
+
+            <TextView
+                android:id="@+id/textview1_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/back"
+                android:gravity="center_vertical"
+                android:text="Test 1" />
         </LinearLayout>
 
         <LinearLayout
@@ -144,6 +242,46 @@
                 android:background="@drawable/back"
                 android:gravity="center_vertical"
                 android:text="Test 1" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:bottom="50dp"
+                android:top="50dp" />
+
+            <TextView
+                android:id="@+id/textview2_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/back"
+                android:gravity="center_vertical"
+                android:text="Test 1" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:bottom="50dp"
+                android:top="50dp" />
+
+            <TextView
+                android:id="@+id/textview2_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/back"
+                android:gravity="center_vertical"
+                android:text="Test 1" />
         </LinearLayout>
 
         <LinearLayout
@@ -195,6 +333,46 @@
 
             <TextView
                 android:id="@+id/textview3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/back"
+                android:gravity="center_vertical"
+                android:text="Test 1" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:bottom="50dp"
+                android:top="50dp" />
+
+            <TextView
+                android:id="@+id/textview3_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/back"
+                android:gravity="center_vertical"
+                android:text="Test 1" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:bottom="50dp"
+                android:top="50dp" />
+
+            <TextView
+                android:id="@+id/textview3_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

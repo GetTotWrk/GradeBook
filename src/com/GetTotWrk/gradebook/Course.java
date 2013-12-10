@@ -204,13 +204,13 @@ public class Course {
 
 		ContentValues initialValues = new ContentValues();
 		initialValues.put(COURSE, course);
-        String string =String.valueOf(num);
+		String string =String.valueOf(num);
 
 		dbCourseOne = new CourseOneData(fragact);
 		courseone = dbCourseOne.getWritableDatabase();
- 
-    
-		
+
+
+
 
 		courseone.update(TABLE_NAME2, initialValues, C_ID + "=?", new String[] { string });
 	}
@@ -264,35 +264,38 @@ public class Course {
 		cursor.moveToFirst();
 		int i = 0;
 		while (cursor.isAfterLast() == false) {
-			i++;
-			String test = Integer.toString(i);
+			if(id == cursor.getInt(cursor.getColumnIndex(COURSE))){
+				i++;
+				String test = Integer.toString(i);
 
-			Log.w(TAG, test);
+				Log.w(TAG, test);
 
-			if (cursor.isNull(cursor.getColumnIndex(RAW_SCORE)) && cursor.isNull(cursor.getColumnIndex(SCORE))){
-				rawscore =1;
-				totalscore = 0;
-				weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
+				if (cursor.isNull(cursor.getColumnIndex(RAW_SCORE)) && cursor.isNull(cursor.getColumnIndex(SCORE))){
+					rawscore =1;
+					totalscore = 0;
+					weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
+				}
+				else if (cursor.isNull(cursor.getColumnIndex(SCORE)) &&!cursor.isNull(cursor.getColumnIndex(RAW_SCORE))){
+					totalscore = cursor.getDouble(cursor.getColumnIndex(RAW_SCORE));
+					rawscore = 1;
+					weight = 0;
+					weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
+				}
+				else if (!cursor.isNull(cursor.getColumnIndex(SCORE)) && cursor.isNull(cursor.getColumnIndex(RAW_SCORE))){
+					totalscore = 0;
+					rawscore = 1;
+					weight = 0;
+					weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
+				}
+				else{
+					rawscore= cursor.getDouble(cursor.getColumnIndex(RAW_SCORE));
+					totalscore = cursor.getDouble(cursor.getColumnIndex(SCORE));
+					weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
+				}
+				grade = grade + (totalscore*weight/rawscore);
 			}
-			else if (cursor.isNull(cursor.getColumnIndex(SCORE)) &&!cursor.isNull(cursor.getColumnIndex(RAW_SCORE))){
-				totalscore = cursor.getDouble(cursor.getColumnIndex(RAW_SCORE));
-				rawscore = 1;
-				weight = 0;
-				weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
-			}
-			else if (!cursor.isNull(cursor.getColumnIndex(SCORE)) && cursor.isNull(cursor.getColumnIndex(RAW_SCORE))){
-				totalscore = 0;
-				rawscore = 1;
-				weight = 0;
-				weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
-			}
-			else{
-				rawscore= cursor.getDouble(cursor.getColumnIndex(RAW_SCORE));
-				totalscore = cursor.getDouble(cursor.getColumnIndex(SCORE));
-				weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
-			}
-			grade = grade + (totalscore*weight/rawscore);
 			cursor.moveToNext();
+
 		}
 		String testString = Double.toString(grade);
 		Log.w(TAG, "Grade: " + testString);
@@ -321,7 +324,8 @@ public class Course {
 	public double CourseHighestGrade(int id){
 		Log.w(TAG, "Started Calculating Grades");
 
-		double grade, rawscore,totalscore,weight;
+		double grade, rawscore,totalscore,weight,totalweight;
+		totalweight = 0;
 		grade = 1;
 		String[] column = {C_ID, ASSIGNMENT_TYPE, COURSE,RAW_SCORE, SCORE, WEIGHT};	//LOMZ
 		Cursor cursor = courseone.query(TABLE_NAME, column, null, null, null, null, null); 
@@ -335,26 +339,23 @@ public class Course {
 				Log.w(TAG, test);
 
 				if (cursor.isNull(cursor.getColumnIndex(RAW_SCORE)) && cursor.isNull(cursor.getColumnIndex(SCORE))){
-					rawscore =1;
-					totalscore = 0;
 					weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
 				}
 				else if (cursor.isNull(cursor.getColumnIndex(SCORE)) &&!cursor.isNull(cursor.getColumnIndex(RAW_SCORE))){
 					totalscore = cursor.getDouble(cursor.getColumnIndex(RAW_SCORE));
 					rawscore = 1;
-					weight = 0;
 					weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
 				}
 				else if (!cursor.isNull(cursor.getColumnIndex(SCORE)) && cursor.isNull(cursor.getColumnIndex(RAW_SCORE))){
 					totalscore = 0;
 					rawscore = 1;
-					weight = 0;
 					weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
 				}
 				else{
 					rawscore= cursor.getDouble(cursor.getColumnIndex(RAW_SCORE));
 					totalscore = cursor.getDouble(cursor.getColumnIndex(SCORE));
 					weight = cursor.getDouble(cursor.getColumnIndex(WEIGHT));
+					totalweight = totalweight + weight;
 					grade = grade- (weight -(totalscore*weight/rawscore));
 					String testString = Double.toString(grade);
 
@@ -372,13 +373,30 @@ public class Course {
 		String testString = Double.toString(grade);
 		Log.w(TAG, "Grade: " + testString);
 
-
-		return 100*grade;
+		if (grade == 0.00 && totalweight>0){
+			return 100;
+		}
+		else{
+			return 100*grade;}
 	}
-    public void remove(long id){
-        String string =String.valueOf(id);
-    	dbCourseOne = new CourseOneData(fragact);
+	public void remove(long id){
+		String string =String.valueOf(id);
+		dbCourseOne = new CourseOneData(fragact);
 		courseone = dbCourseOne.getWritableDatabase();
-        courseone.delete(TABLE_NAME, COURSE + "=?", new String[] { string });
-    }
+		courseone.delete(TABLE_NAME, COURSE + "=?", new String[] { string });
+	}
+	public void tabledelete(Cursor cursor) {
+		// TODO Auto-generated method stub
+		Log.w(TAG, "STARTED UPDATE VALUES");
+
+		String where = "_id=?";
+		int id = cursor.getColumnIndexOrThrow("_id");
+		String testString = Double.toString(id);
+		Log.w(TAG, "ID: " + cursor.getString(cursor.getColumnIndexOrThrow("_id")));
+
+		String[] whereArgs = new String[] {cursor.getString(cursor.getColumnIndexOrThrow("_id"))};
+		Log.w(TAG, cursor.getString(cursor.getColumnIndexOrThrow("_id")));
+		courseone.delete(TABLE_NAME, where, whereArgs);
+	}
 }
+
