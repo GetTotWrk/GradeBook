@@ -108,6 +108,7 @@ ActionBar.TabListener {
 					message1_3.setText(course.GetCourseName(3));
 					message1_4.setText(course.GetCourseName(4));
 					message1_5.setText(course.GetCourseName(5));
+					Toast.makeText(getActivity(),"Grades of all courses updated",Toast.LENGTH_LONG).show();
 
 
 				}
@@ -143,7 +144,7 @@ ActionBar.TabListener {
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		//getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
@@ -363,7 +364,7 @@ ActionBar.TabListener {
 				public void onClick(View arg0) {
 					final Dialog custom = new Dialog(getActivity());
 					custom.setContentView(R.layout.dialog_editcourse);
-					custom.setTitle("Add Assignment Grade");
+					custom.setTitle("Edit Course Assignments");
 					Button button0_2 = (Button)custom.findViewById(R.id.button0_2);
 					button0_2.setOnClickListener(new View.OnClickListener() {
 
@@ -428,7 +429,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -488,7 +489,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -551,7 +552,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -610,7 +611,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -668,7 +669,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -726,7 +727,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -784,7 +785,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -843,7 +844,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -902,7 +903,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -986,7 +987,12 @@ ActionBar.TabListener {
 						public void onClick(View view) {
 							// TODO Auto-generated method stub
 
+							String totalscorestr = totalscore.getText().toString();
+							String rawscorestr = rawscore.getText().toString();
 
+							if (totalscorestr.matches("") || rawscorestr.matches("")) {
+								Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
+							else{
 
 							//spinner.setText(" ");
 							String text2 = totalscore.getText().toString();
@@ -1012,7 +1018,7 @@ ActionBar.TabListener {
 
 								custom.dismiss();
 
-
+							}
 							}
 
 						}
@@ -1050,7 +1056,7 @@ ActionBar.TabListener {
 
 			adapter.setFilterQueryProvider(new FilterQueryProvider() {
 				public Cursor runQuery(CharSequence constraint) {
-					return course.fetchAssignmentsbyName(constraint.toString());
+					return course.fetchAssignmentsbyAssignment(constraint.toString());
 				}
 			});
 
@@ -1119,7 +1125,7 @@ ActionBar.TabListener {
 				public void onClick(View arg0) {
 					final Dialog custom = new Dialog(getActivity());
 					custom.setContentView(R.layout.dialog_editcourse);
-					custom.setTitle("Add Assignment Grade");
+					custom.setTitle("Edit Course Assignments");
 					Button button0_2 = (Button)custom.findViewById(R.id.button0_2);
 					button0_2.setOnClickListener(new View.OnClickListener() {
 
@@ -1182,7 +1188,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1241,7 +1247,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1300,7 +1306,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1359,7 +1365,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1417,7 +1423,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1475,7 +1481,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1533,7 +1539,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1590,7 +1596,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1647,7 +1653,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1730,8 +1736,13 @@ ActionBar.TabListener {
 							// TODO Auto-generated method stub
 
 
+							String totalscorestr = totalscore.getText().toString();
+							String rawscorestr = rawscore.getText().toString();
 
-							//spinner.setText(" ");
+							if (totalscorestr.matches("") || rawscorestr.matches("")) {
+								Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
+							else{
+							
 							String text2 = totalscore.getText().toString();
 							String text3 = rawscore.getText().toString();
 
@@ -1753,7 +1764,7 @@ ActionBar.TabListener {
 
 								course.tableupdate(cursor2, totalscoredouble,rawscoredouble);
 
-								custom.dismiss();
+								custom.dismiss();}
 
 
 							}
@@ -1793,7 +1804,7 @@ ActionBar.TabListener {
 
 			adapter.setFilterQueryProvider(new FilterQueryProvider() {
 				public Cursor runQuery(CharSequence constraint) {
-					return course.fetchAssignmentsbyName(constraint.toString());
+					return course.fetchAssignmentsbyAssignment(constraint.toString());
 				}
 			});
 
@@ -1862,7 +1873,7 @@ ActionBar.TabListener {
 				public void onClick(View arg0) {
 					final Dialog custom = new Dialog(getActivity());
 					custom.setContentView(R.layout.dialog_editcourse);
-					custom.setTitle("Add Assignment Grade");
+					custom.setTitle("Edit Course Assignments");
 					Button button0_2 = (Button)custom.findViewById(R.id.button0_2);
 					button0_2.setOnClickListener(new View.OnClickListener() {
 
@@ -1924,7 +1935,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -1983,7 +1994,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2042,7 +2053,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2103,7 +2114,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2161,7 +2172,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2219,7 +2230,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2277,7 +2288,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2334,7 +2345,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2391,7 +2402,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2466,7 +2477,12 @@ ActionBar.TabListener {
 						public void onClick(View view) {
 							// TODO Auto-generated method stub
 
+							String totalscorestr = totalscore.getText().toString();
+							String rawscorestr = rawscore.getText().toString();
 
+							if (totalscorestr.matches("") || rawscorestr.matches("")) {
+								Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
+							else{
 
 							//spinner.setText(" ");
 							String text2 = totalscore.getText().toString();
@@ -2493,6 +2509,7 @@ ActionBar.TabListener {
 								custom.dismiss();
 
 
+							}
 							}
 
 						}
@@ -2530,7 +2547,7 @@ ActionBar.TabListener {
 
 			adapter.setFilterQueryProvider(new FilterQueryProvider() {
 				public Cursor runQuery(CharSequence constraint) {
-					return course.fetchAssignmentsbyName(constraint.toString());
+					return course.fetchAssignmentsbyAssignment(constraint.toString());
 				}
 			});
 
@@ -2599,7 +2616,7 @@ ActionBar.TabListener {
 				public void onClick(View arg0) {
 					final Dialog custom = new Dialog(getActivity());
 					custom.setContentView(R.layout.dialog_editcourse);
-					custom.setTitle("Add Assignment Grade");
+					custom.setTitle("Edit Course Assignments");
 					Button button0_2 = (Button)custom.findViewById(R.id.button0_2);
 					button0_2.setOnClickListener(new View.OnClickListener() {
 
@@ -2661,7 +2678,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2720,7 +2737,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2779,7 +2796,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2838,7 +2855,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2896,7 +2913,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -2954,7 +2971,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3012,7 +3029,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3069,7 +3086,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3126,7 +3143,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3206,10 +3223,15 @@ ActionBar.TabListener {
 						@Override
 						public void onClick(View view) {
 							// TODO Auto-generated method stub
+							String totalscorestr = totalscore.getText().toString();
+							String rawscorestr = rawscore.getText().toString();
+
+							if (totalscorestr.matches("") || rawscorestr.matches("")) {
+								Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
+							else{
 
 
-
-							//spinner.setText(" ");
+						
 							String text2 = totalscore.getText().toString();
 							String text3 = rawscore.getText().toString();
 
@@ -3234,6 +3256,7 @@ ActionBar.TabListener {
 								custom.dismiss();
 
 
+							}
 							}
 
 						}
@@ -3271,7 +3294,7 @@ ActionBar.TabListener {
 
 			adapter.setFilterQueryProvider(new FilterQueryProvider() {
 				public Cursor runQuery(CharSequence constraint) {
-					return course.fetchAssignmentsbyName(constraint.toString());
+					return course.fetchAssignmentsbyAssignment(constraint.toString());
 				}
 			});
 
@@ -3340,7 +3363,7 @@ ActionBar.TabListener {
 				public void onClick(View arg0) {
 					final Dialog custom = new Dialog(getActivity());
 					custom.setContentView(R.layout.dialog_editcourse);
-					custom.setTitle("Add Assignment Grade");
+					custom.setTitle("Edit Course Assignments");
 					Button button0_2 = (Button)custom.findViewById(R.id.button0_2);
 					button0_2.setOnClickListener(new View.OnClickListener() {
 
@@ -3402,7 +3425,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3461,7 +3484,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3520,7 +3543,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3579,7 +3602,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3637,7 +3660,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3695,7 +3718,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3753,7 +3776,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3810,7 +3833,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3867,7 +3890,7 @@ ActionBar.TabListener {
 							custom.hide();
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcourse_dialog_assignment);
-							secondary.setTitle("Add or Edit Assignment Type");
+							secondary.setTitle("Add Assignment Type");
 							Log.w(TAG, "Dialog Changed");
 							secondary.show();
 							final EditText assignment = (EditText) secondary.findViewById(R.id.assignment);
@@ -3958,7 +3981,12 @@ ActionBar.TabListener {
 						@Override
 						public void onClick(View view) {
 							// TODO Auto-generated method stub
+							String totalscorestr = totalscore.getText().toString();
+							String rawscorestr = rawscore.getText().toString();
 
+							if (totalscorestr.matches("") || rawscorestr.matches("")) {
+								Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
+							else{
 
 
 							//spinner.setText(" ");
@@ -3984,7 +4012,7 @@ ActionBar.TabListener {
 								course.tableupdate(cursor2, totalscoredouble,rawscoredouble);
 
 								custom.dismiss();
-
+							}
 
 							}
 
@@ -4023,7 +4051,7 @@ ActionBar.TabListener {
 
 			adapter.setFilterQueryProvider(new FilterQueryProvider() {
 				public Cursor runQuery(CharSequence constraint) {
-					return course.fetchAssignmentsbyName(constraint.toString());
+					return course.fetchAssignmentsbyAssignment(constraint.toString());
 				}
 			});
 

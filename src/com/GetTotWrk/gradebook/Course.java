@@ -198,6 +198,23 @@ public class Course {
 		return mCursor;
 
 	}
+	public Cursor fetchAssignmentsbyAssignment(String inputText) throws SQLException {
+		Log.w(TAG, inputText);
+		Cursor mCursor = null;
+		String[] column = {C_ID, ASSIGNMENT_TYPE,COURSE,RAW_SCORE,SCORE, WEIGHT};	//LOMZ
+
+		if (inputText == null  ||  inputText.length () == 0)  {
+			mCursor = courseone.query(TABLE_NAME, column,null, null, null, null, null);
+		}
+		else {
+			mCursor = courseone.query(true, TABLE_NAME, column, ASSIGNMENT_TYPE + " like '%" + inputText + "%'", null,null, null, null, null);
+		}
+		if (mCursor != null) {
+			mCursor.moveToFirst();
+		}
+		return mCursor;
+
+	}
 	public void courseNameUpdate(int num, String course) {
 		// TODO Auto-generated method stub
 		Log.w(TAG, "START UPDATE CourseName");

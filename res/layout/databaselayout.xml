@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Search by Assignment name" />
+        android:hint="Search by Assignment Type" />
 
     <ListView
         android:id="@+id/listView1"
