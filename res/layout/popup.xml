@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+   
+
+        <ScrollView
+            android:id="@+id/popupscrollView1"
+            android:layout_width="200dp"
+            android:layout_height="fill_parent" >
+
+            <TableLayout
+                android:id="@+id/popupTableLayout1"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|right" >
+
+                <Button
+                    android:id="@+id/popupsendbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical|left"
+                    android:text="Send Message" />
+
+                <Space
+                    android:id="@+id/popupSpace1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextureView
+                    android:id="@+id/popuptextureView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/popupinputtext"
+                    android:layout_width="101dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:ems="10"
+                    android:hint="@string/inputtext" />
+
+                <Button
+                    android:id="@+id/popupButton01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:text="Send Message" />
+
+                <EditText
+                    android:id="@+id/popupEditText01"
+                    android:layout_width="101dp"
+                    android:layout_height="50dp"
+                    android:ems="10" />
+
+                <TextView
+                    android:id="@+id/popuptextview2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:text="This is your message" />
+
+                <Spinner
+                    android:id="@+id/popupspinner1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:entries="@array/assignment_types" />
+
+                <Button
+                    android:id="@+id/popupbutton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Button" />
+
+                <TextView
+                    android:id="@+id/popupTextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="This is your message" />
+            </TableLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/popuptextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/popupscrollView1"
+            android:layout_marginTop="88dp"
+            android:text="This is your message" />
+
+    <Button
+        android:id="@+id/popupCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/popupscrollView1"
+        android:layout_centerHorizontal="true"
+        android:text="Cancel" />
+
+</RelativeLayout>

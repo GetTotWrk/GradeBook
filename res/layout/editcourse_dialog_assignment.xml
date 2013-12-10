@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+     <EditText
+        android:id="@+id/assignment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="Assignment "
+        android:inputType="numberSigned" />
+
+    <EditText
+        android:id="@+id/assignmentweight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/assignment"
+        android:layout_centerHorizontal="true"
+        android:hint="Assignment Weight"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/assignmentnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/assignmentweight"
+        android:layout_centerHorizontal="true"
+        android:hint="Assignment Number"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/savebtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/canbtn2"
+        android:layout_alignBottom="@+id/canbtn2"
+        android:layout_alignRight="@+id/assignmentnumber"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/canbtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/assignmentnumber"
+        android:layout_below="@+id/assignmentnumber"
+        android:text="Cancel" />
+
+</RelativeLayout>

@@ -1,0 +1,154 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#99ccff"
+    android:baselineAligned="false"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#99ccff"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".95"
+            android:fillViewport="true"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/button1_1"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Homework" />
+
+            <Button
+                android:id="@+id/button1_2"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Lab" />
+
+            <Button
+                android:id="@+id/button1_3"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Quiz" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/button2_1"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Essay" />
+
+            <Button
+                android:id="@+id/button2_2"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Pre-Lab" />
+
+            <Button
+                android:id="@+id/button2_3"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Program" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/button3_1"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Exam" />
+
+            <Button
+                android:id="@+id/button3_2"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Project" />
+
+            <Button
+                android:id="@+id/button3_3"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:fillViewport="true"
+                android:gravity="center_vertical"
+                android:text="Other" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#99ccff"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/button0_1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back"
+            android:fillViewport="true"
+            android:gravity="center_vertical"
+            android:text="Edit Course Name" />
+    </LinearLayout>
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#99ccff"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/button0_2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back"
+            android:fillViewport="true"
+            android:gravity="center_vertical"
+            android:text="Clear Course" />
+    </LinearLayout>
+</LinearLayout>

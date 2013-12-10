@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/action_settings"/>
+    <item
+        android:id="@+id/create_course"
+        android:orderInCategory="2"
+        android:showAsAction="always"
+        android:title="@string/create_course"/>
+
+</menu>

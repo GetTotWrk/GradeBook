@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GradeTracker</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_total">Total</string>
+    <string name="title_section1">Course 1</string>
+    <string name="title_section2">Course 2</string>
+    <string name="title_section3">Course 3</string>
+    <string name="title_section4">Course 4</string>
+    <string name="title_section5">Course 5</string>
+    <string name="create_course">Create Course</string>
+
+    <string-array name="assignment_types">
+        <item>Assignment Types</item>
+        <item>Homework</item>
+        <item>Quiz</item>
+        <item>Project</item>
+        <item>Term Paper</item>
+        <item>Essay</item>
+        <item>Exam</item>
+        <item>Lab Report</item>
+        <item>Pre-Lab</item>
+        <item>Program</item>
+        <item>Problem Set</item>
+        <item>Case Study</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="inputtext"></string>
+
+</resources>

@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:entries="@array/assignment_types"
+        android:text="Hint" />
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Enter Points:" />
+
+    <EditText
+        android:id="@+id/rawscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/totalscore"
+        android:layout_alignBottom="@+id/totalscore"
+        android:layout_alignRight="@+id/spinner"
+        android:layout_centerHorizontal="true"
+        android:hint="Recieved" />
+
+    <EditText
+        android:id="@+id/totalscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinner"
+        android:layout_below="@+id/points"
+        android:hint="Possible" />
+
+    <EditText
+        android:id="@+id/assignmentnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/totalscore"
+        android:layout_centerHorizontal="true"
+        android:hint="Assignment Number"
+        android:inputType ="numberSigned" />
+
+    <Button
+        android:id="@+id/savebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/canbtn"
+        android:layout_alignBottom="@+id/canbtn"
+        android:layout_alignRight="@+id/spinner"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/canbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinner"
+        android:layout_below="@+id/assignmentnumber"
+        android:text="Cancel" />
+
+</RelativeLayout>
