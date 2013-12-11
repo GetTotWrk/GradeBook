@@ -21,7 +21,7 @@
         android:layout_alignBottom="@+id/totalscore"
         android:layout_alignLeft="@+id/points"
         android:layout_centerHorizontal="true"
-        android:hint="Recieved"
+        android:hint="Received"
         android:inputType="numberSigned" />
 
     <EditText

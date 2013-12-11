@@ -10,25 +10,29 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
+
+
+//Course Object that keeps the database and has member functions to edit database
+
+
+
 public class Course {
 	private static final String TAG = "COURSES";
 	private CourseOneData dbCourseOne;
 	private SQLiteDatabase courseone;
 
-
-
-
-
-	public CourseOneData dbhelper(){
+	public CourseOneData dbhelper(){	//returnse database helper
 		return dbCourseOne;
 	}
 
-	public SQLiteDatabase coursedb(){
+	public SQLiteDatabase coursedb(){	//returns full datbase
 		return courseone;
 	}
 
-
+	//Static fragment activity
 	public final FragmentActivity fragact;
+	
+	//strings defining the databse name, columns and table name
 	public static final String DATABASE_NAME = "course_database2";
 	public static final String TABLE_NAME = "course_table";
 	public static final String TABLE_NAME2 = "course_table2";
@@ -41,6 +45,8 @@ public class Course {
 	public static final String NUMBER = "number";
 	public static final int VERSION = 1;
 
+	
+	//SQL database main table creator string
 	private final static String createDB = "create table if not exists " + TABLE_NAME + " ( "
 			+ C_ID + " integer primary key autoincrement, "
 			+ COURSE +" real, "
@@ -49,10 +55,16 @@ public class Course {
 			+ WEIGHT +" real, "
 			+ RAW_SCORE +" real, "
 			+ SCORE +" real); ";
+	//SQL database main table2 creator string
+
 	private final static String createDB2 = "create table if not exists " + TABLE_NAME2 + " ( "
 			+ C_ID + " integer primary key autoincrement, "
 			+ COURSE +" text); ";
 
+	
+	
+	
+	//Fetch all entries returns the entire database
 	public Cursor fetchAllEntries() {
 		Log.w(TAG, "FETCH ALL ENTRIES");
 
@@ -61,6 +73,7 @@ public class Course {
 		Cursor cursor = courseone.query(TABLE_NAME, column, null, null, null, null, null); 
 		String testString = Integer.toString(cursor.getCount());
 
+		//makes sure cursor is not null which would indicate an error with the database
 		if (cursor != null) {
 			cursor.moveToFirst();
 			Log.w(TAG, testString);
@@ -68,18 +81,18 @@ public class Course {
 		}
 		return cursor;
 	}
+	
+	//Constructor instantiates the object based on the activity the object is in
 	public Course(FragmentActivity fragact) {
 		this.fragact = fragact;
 	}
 	private static class CourseOneData extends SQLiteOpenHelper {
 
-
-
 		CourseOneData(Context context){
 			super(context, DATABASE_NAME, null, VERSION);
 		}
 
-
+			//creaes SQLite Database with 2 tables
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			Log.w(TAG, "CREATE TABLE");
@@ -89,7 +102,7 @@ public class Course {
 
 		}
 		@Override
-
+				//when DB is updated the table is expanded
 		public void onUpgrade(SQLiteDatabase db, int oldversion, int newversion) {
 
 			db.execSQL("drop table " + TABLE_NAME);
@@ -97,6 +110,8 @@ public class Course {
 		}
 	}
 
+	
+		//Another constructor that also creates a DB links with previous constructor
 	public Course open() throws SQLException {
 		try{
 			dbCourseOne = new CourseOneData(fragact);
@@ -130,11 +145,11 @@ public class Course {
 
 		}
 		return this;
-
+//returns entire DB
 	}
 
 
-
+// inputs function arguments into DB
 	public long createAssignment(String assignmentType,int course, Double weight, int assnum) {
 		Log.w(TAG, "STARTED INSERT VALUES");
 		Log.w(TAG, course + " " +assignmentType + " " + weight);
@@ -150,7 +165,7 @@ public class Course {
 
 	}
 
-
+//creates new course name in table2
 	public long createCourse(String course) {
 		Log.w(TAG, "STARTED INSERT VALUES");
 		Log.w(TAG, course);
@@ -162,13 +177,20 @@ public class Course {
 		return courseone.insert(TABLE_NAME2, null, initialValues);
 
 	}
+	
+	//for testing and user experience purposes puts in some sample data
 	public void insertSomeCourses() {
 
 		createCourse("Course 1");
 		createCourse("Course 2");
 		createCourse("Course 3");
 		createCourse("Course 4");
+		createCourse("Course 5");
+		createCourse("Course 6");
+
 	}
+	
+	//for testing purposes puts in sample data assignments
 	public void insertSomeAssignments() {
 
 		createAssignment("Test",1,.30,2);
@@ -178,13 +200,13 @@ public class Course {
 	}
 
 
-
+//returns all DB entries that match function arguments
 	public Cursor fetchAssignmentsbyName(String inputText) throws SQLException {
 		Log.w(TAG, inputText);
 		int ID = Integer.parseInt(inputText);
 		Cursor mCursor = null;
 		String[] column = {C_ID, ASSIGNMENT_TYPE,COURSE,RAW_SCORE,SCORE, WEIGHT};	//LOMZ
-
+//chekcs input args
 		if (inputText == null  ||  inputText.length () == 0)  {
 			mCursor = courseone.query(TABLE_NAME, column,null, null, null, null, null);
 
@@ -195,9 +217,12 @@ public class Course {
 		if (mCursor != null) {
 			mCursor.moveToFirst();
 		}
+		//return cursor with all values
 		return mCursor;
 
 	}
+	
+	//same as previous function but checks for assignment name rather than course name
 	public Cursor fetchAssignmentsbyAssignment(String inputText) throws SQLException {
 		Log.w(TAG, inputText);
 		Cursor mCursor = null;
@@ -215,6 +240,8 @@ public class Course {
 		return mCursor;
 
 	}
+	
+	//change name of certain course
 	public void courseNameUpdate(int num, String course) {
 		// TODO Auto-generated method stub
 		Log.w(TAG, "START UPDATE CourseName");
@@ -231,7 +258,7 @@ public class Course {
 
 		courseone.update(TABLE_NAME2, initialValues, C_ID + "=?", new String[] { string });
 	}
-
+//Update table based on user defined arguements, adds raw and recieved score
 	public void tableupdate(Cursor cursor,Double rawscore, Double totalscore) {
 		// TODO Auto-generated method stub
 		Log.w(TAG, "STARTED UPDATE VALUES");
@@ -249,6 +276,8 @@ public class Course {
 		courseone.update(TABLE_NAME, initialValues, where, whereArgs);
 	}
 
+	
+	//creates assignment row, defines type, course name, weight and number of assignm,ents
 	public Course createcourseassignment(String assignmentype, String Course, Double weight, int assnum){
 		dbCourseOne = new CourseOneData(fragact);
 		courseone = dbCourseOne.getWritableDatabase();
@@ -270,7 +299,9 @@ public class Course {
 		return this;
 
 	}
-
+//calculates current course grade by grade = grade + (weight*recieved/total)
+	//iterates over entire DB
+	//only sums those entries that are associated with the user defined course
 	public double CourseGrade(int id){
 		Log.w(TAG, "Started Calculating Grades");
 
@@ -320,6 +351,10 @@ public class Course {
 
 		return 100*grade;
 	}
+	
+	//get course name
+	//used in totalfragment
+	
 	public String GetCourseName(int id){
 		String coursename = "course";
 
@@ -337,7 +372,9 @@ public class Course {
 		}
 		return coursename;
 	}
-
+	//does same thing as previous argument but calculates the highest score you can get by figuring out how many points
+	// you have already lost
+	//Assumes grade is out of 100
 	public double CourseHighestGrade(int id){
 		Log.w(TAG, "Started Calculating Grades");
 
@@ -396,12 +433,16 @@ public class Course {
 		else{
 			return 100*grade;}
 	}
+	
+	//Deletes all entries associated with a certain course
 	public void remove(long id){
 		String string =String.valueOf(id);
 		dbCourseOne = new CourseOneData(fragact);
 		courseone = dbCourseOne.getWritableDatabase();
 		courseone.delete(TABLE_NAME, COURSE + "=?", new String[] { string });
 	}
+	
+	//deletes all entries in a certain row b
 	public void tabledelete(Cursor cursor) {
 		// TODO Auto-generated method stub
 		Log.w(TAG, "STARTED UPDATE VALUES");

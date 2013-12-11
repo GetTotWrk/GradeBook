@@ -51,9 +51,36 @@ import android.text.TextWatcher;
 
 public class MainActivity extends FragmentActivity implements
 ActionBar.TabListener {
+	
+	//Logs are used in order to debug, this way people who want to see how the app works
+	//can access the logs to see how data is transferred and without ever changing the user interface
+	
+	
+
+	//course1, course2, course3, course4, course5 are all identicial accept for hardcoded to refer to specvific course
+	// Buttons: button1_1,button3_1,button2_1,button2_1,button2_2,button2_3 ,button3_1,button3_2,button3_2 are all identical
+	// except for hard coded to refer to specific assignments
+	// button1_1 in course1 commented for questions on how the buttons work see that instance
+	
+	
+	//variables used in fragments to return user input to functions
+	Button cust;
+	Dialog custom;
+	Dialog secondary;
+	EditText Fname;
+	EditText Lname;
+	static String Course1;
+	TextView txt;
+	Button savebtn;
+	Button canbtn;
+	TextView frag;
+	static int assnum;
+	static Double weight;
+	static Double weightdouble,totalscoredouble,rawscoredouble;
+	static Double num;
+
+	SectionsPagerAdapter mSectionsPagerAdapter;
 	public static class TotalSectionFragment extends Fragment {
-		//DBHelperCourseName dbhelpercoursename
-		//SQLiteDatabase 
 
 		private static final String TAG = "TOTALSECTIONFRAGMENT";
 
@@ -64,10 +91,11 @@ ActionBar.TabListener {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			final View rootView = inflater.inflate(R.layout.summary_frag, container, false);
-			//			dbhelpercoursename = new DBHelperCourseName(getActivity());
-			//			dbcourse = dbhelpercoursename.getWritableDatabase();
+			//load course object
 			course = new Course(getActivity());
 			Log.w(TAG, "COURSES ");
+			
+			//load all text box variables
 			final TextView message1_1 = (TextView) rootView.findViewById(R.id.textview1_1);
 			final TextView message1_2 = (TextView) rootView.findViewById(R.id.textview1_2);
 			final TextView message1_3 = (TextView) rootView.findViewById(R.id.textview1_3);
@@ -86,10 +114,12 @@ ActionBar.TabListener {
 			final TextView message3_3 = (TextView) rootView.findViewById(R.id.textview3_3);
 			final TextView message3_4 = (TextView) rootView.findViewById(R.id.textview3_4);
 			final TextView message3_5 = (TextView) rootView.findViewById(R.id.textview3_5);
-
+//load update button 
 			Button updategrade = (Button) rootView.findViewById(R.id.updategrade);
+			
 			updategrade.setOnClickListener(new OnClickListener(){
-
+					//When update is pressed functions called to update grade
+					// buttons are hard coded to correspond with certain fragments
 				@Override
 				public void onClick(View arg0) {
 					message3_1.setText(String.format("%.2f", course.CourseGrade(1)));
@@ -132,42 +162,13 @@ ActionBar.TabListener {
 			message1_3.setText(course.GetCourseName(3));
 			message1_4.setText(course.GetCourseName(4));
 			message1_5.setText(course.GetCourseName(5));
-
-
-
-
-
-
 			return rootView;
 		}
 	}
 
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+	
 
-	Button cust;
-	Dialog custom;
-	Dialog secondary;
-	EditText Fname;
-	EditText Lname;
-	static String Course1;
-	TextView txt;
-	Button savebtn;
-	Button canbtn;
-	TextView frag;
-	static int assnum;
-	static Double weight;
-	static Double weightdouble,totalscoredouble,rawscoredouble;
-	static Double num;
-
-	SectionsPagerAdapter mSectionsPagerAdapter;
-
-	/**
-	 * The {@link ViewPager} that will host the section contents.
-	 */
+	
 	ViewPager mViewPager;
 
 	@Override
@@ -244,15 +245,15 @@ ActionBar.TabListener {
 
 		@Override
 		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a DummySectionFragment (defined as a static inner class
-			// below) with the page number as its lone argument.
+			//chooses the correct fragment
+			//all fragments are identical expect for hard coding
+			//of inputs into database querying functions 
 			if(position == 0){
 				Fragment fragment = new TotalSectionFragment();
 				return fragment;
 			}
 			else if(position == 1){
-				Fragment fragment = new DummySectionFragment();
+				Fragment fragment = new Course1();
 				return fragment;
 			}
 			else if(position == 2){
@@ -279,6 +280,8 @@ ActionBar.TabListener {
 			return 6;
 		}
 
+		
+		//sets the title of the actionbar
 		@Override
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
@@ -307,13 +310,16 @@ ActionBar.TabListener {
 	 */
 	static Course course;
 
-	public static class DummySectionFragment extends Fragment {
+	
+	
+	//Fragment that display everything for Course1
+	public static class Course1 extends Fragment {
 		private static final String TAG = "MainActivity1";
 		SimpleCursorAdapter adapter;
 		Cursor cursor;
 		ListView list;
 		int intnum;
-		public DummySectionFragment() {
+		public Course1() {
 		}
 
 		@Override
@@ -344,20 +350,23 @@ ActionBar.TabListener {
 			list.setAdapter(adapter);	//LOMZ
 			Log.w(TAG, "Set new adapter");
 
-			Button Update = (Button) rootView.findViewById(R.id.updateview);
-			Update.setOnClickListener(new OnClickListener(){
+			Button Update = (Button) rootView.findViewById(R.id.updateview); // update button updates the view of the app
+			Update.setOnClickListener(new OnClickListener(){ 
 
 				@Override
 				public void onClick(View arg0) {
-					cursor = course.fetchAssignmentsbyName("1"); //HardCoded
-					adapter.swapCursor(cursor);
-					list.setAdapter(adapter);
+					cursor = course.fetchAssignmentsbyName("1"); //HardCoded to only show courses with identifier of "1"
+					adapter.swapCursor(cursor); // changes adapter
+					list.setAdapter(adapter); // displays new adapter
+												// in order to show the updates list
 					Toast.makeText(getActivity(),"Course List updated",Toast.LENGTH_LONG).show();
 
 				}
 
 			});
 			Button editcourse = (Button) rootView.findViewById(R.id.editcourse);
+			// shows dialog box with choices
+			// 
 			editcourse.setOnClickListener(new OnClickListener(){
 
 				@Override
@@ -377,30 +386,31 @@ ActionBar.TabListener {
 
 					});
 
-					Button button0_1 = (Button)custom.findViewById(R.id.button0_1);
-					button0_1.setOnClickListener(new View.OnClickListener() {
+					Button button0_1 = (Button)custom.findViewById(R.id.button0_1); 
+					button0_1.setOnClickListener(new View.OnClickListener() { // on press dialog appears to allow user to
+																			// change the course name on the title page
 						@Override
 						public void onClick(View view) {
 							Log.w(TAG, "Edit Course Clicked");
 
-							custom.hide();
+							custom.hide();	// hides previous dialog box
 							final Dialog secondary = new Dialog(getActivity());
 							secondary.setContentView(R.layout.editcoursename_dialog);
 							secondary.setTitle("Edit Course Name");
 							Log.w(TAG, "Dialog Changed");
-							secondary.show();
+							secondary.show(); // shows new dialog box with custom title
 
 							Log.w(TAG, "Dialog Show");
 							final EditText coursename = (EditText) secondary.findViewById(R.id.coursename);
 							coursename.setText("Course 1");
 							Button cancel = (Button) secondary.findViewById(R.id.canbtn3);
 							Button save = (Button) secondary.findViewById(R.id.savebtn3);
-							cancel.setOnClickListener(new View.OnClickListener() {
+							cancel.setOnClickListener(new View.OnClickListener() { //when cancel button is pressed
 
 								@Override
 								public void onClick(View v) {
-									secondary.dismiss();
-									custom.show();
+									secondary.dismiss();		// close current dialog box
+									custom.show();				// return to previous dialog box
 
 								}
 							});
@@ -409,11 +419,12 @@ ActionBar.TabListener {
 								@Override
 								public void onClick(View v) {
 									String coursnametext = coursename.getText().toString();
-									course.courseNameUpdate(1,coursnametext);
-									secondary.dismiss();
+									course.courseNameUpdate(1,coursnametext);	// Call course member function
+																				// changes all instances for that course
+									secondary.dismiss();						//close current box
 									Toast.makeText(getActivity(),"Assignments added",Toast.LENGTH_LONG).show();
 
-									custom.show();
+									custom.show();								// open previous box
 								}
 							});
 
@@ -454,30 +465,31 @@ ActionBar.TabListener {
 
 								@Override
 								public void onClick(View v) {
-									String assignmentnumstr = assignmentnum1.getText().toString();
-									String assignmentweightstr = assignmentnum1.getText().toString();
+									String assignmentnumstr = assignmentnum1.getText().toString();	// save num to string
+									String assignmentweightstr = assignmentnum1.getText().toString(); // save weight to string
 
-									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) {
+									if (assignmentnumstr.matches("") || assignmentweightstr.matches("")) { //check to see if string is empty
 										Toast.makeText(getActivity(), "You did not enter a value", Toast.LENGTH_SHORT).show();}
+									//if string is not empty then save the values to the database
 									else{
-										assnum = Integer.parseInt(assignmentnum1.getText().toString());
-										weight = Double.parseDouble(assignmentweight1.getText().toString());
+										assnum = Integer.parseInt(assignmentnum1.getText().toString()); // database expects integer
+										weight = Double.parseDouble(assignmentweight1.getText().toString()); // database expects double
 
-										if (weight <= 0 || weight > 1 || assnum <= 0  ){
+										if (weight <= 0 || weight > 1 || assnum <= 0  ){ // make sure inputs are in the right range
 											Log.w(TAG, "Min Conditions not met");
 											Log.w(TAG, "Assnum" + assignmentnum1.getText().toString());
 											Log.w(TAG, "weight" + assignmentweight1.getText().toString());
 											Toast.makeText(getActivity(),"Error: assignments not added",Toast.LENGTH_LONG).show();
-
+											//if not in the right rang then display a notification
 
 										}
 										else{
-											Log.w(TAG, "Min Conditions met");
-											course.createcourseassignment("Homework", "1", weight,assnum); //HardCoded
+											Log.w(TAG, "Min Conditions met");	// display
+											course.createcourseassignment("Homework", "1", weight,assnum); //HardCoded call course member function to create assignment
 											Log.w(TAG, "Course Assignment Saved");
-											Toast.makeText(getActivity(),"Assignments added",Toast.LENGTH_LONG).show();
-											secondary.dismiss();
-											custom.show();}}
+											Toast.makeText(getActivity(),"Assignments added",Toast.LENGTH_LONG).show(); // display confirmation of saving
+											secondary.dismiss();		//close current window
+											custom.show();}}			// open previous window
 								}
 							});
 						}
@@ -959,13 +971,14 @@ ActionBar.TabListener {
 				}
 
 			});
-
+			// list displays the database values ie the assignments/grades
+			//when entry is clicked dialog box shows up
+			// dialog box acts the same as the other buttons in terms of error checkign
 
 			list.setOnItemClickListener(new OnItemClickListener() {
 				@Override
 				public void onItemClick(AdapterView<?> list, View view, int position, long id) {
 					// Get the cursor, positioned to the corresponding row in the result set
-					position = position+1;
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
@@ -999,12 +1012,12 @@ ActionBar.TabListener {
 							String text3 = rawscore.getText().toString();
 
 							try {
-								rawscoredouble = Double.parseDouble(text3); // Make use of autoboxing.  It's also easier to read.
+								rawscoredouble = Double.parseDouble(text3); // use excveption for handling parsing error.
 							} catch (NumberFormatException e) {
 
 							}
 							try {
-								totalscoredouble = Double.parseDouble(text2); // Make use of autoboxing.  It's also easier to read.
+								totalscoredouble = Double.parseDouble(text2); // use exception for error handling parsing error
 							} catch (NumberFormatException e) {
 
 							}
@@ -1038,6 +1051,9 @@ ActionBar.TabListener {
 
 
 			});
+			
+			//Searching for different asssignment typs
+			//
 			EditText myFilter = (EditText) rootView.findViewById(R.id.myFilter);
 			myFilter.addTextChangedListener(new TextWatcher() {
 				public void afterTextChanged(Editable s) {
@@ -1056,8 +1072,8 @@ ActionBar.TabListener {
 
 			adapter.setFilterQueryProvider(new FilterQueryProvider() {
 				public Cursor runQuery(CharSequence constraint) {
-					return course.fetchAssignmentsbyAssignment(constraint.toString());
-				}
+					return course.fetchAssignmentsbyAssignment(constraint.toString()); //calls member function to find 
+				}													//all entries with a certain course name and assignment type
 			});
 
 
@@ -1069,6 +1085,8 @@ ActionBar.TabListener {
 		}
 
 	}
+	
+	//see comments on Course1 for details of operation
 	public static class Course2 extends Fragment {
 		private static final String TAG = "MainActivity1";
 		SimpleCursorAdapter adapter;
@@ -1713,7 +1731,6 @@ ActionBar.TabListener {
 				@Override
 				public void onItemClick(AdapterView<?> list, View view, int position, long id) {
 					// Get the cursor, positioned to the corresponding row in the result set
-					position = position+1;
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
@@ -2455,7 +2472,6 @@ ActionBar.TabListener {
 				@Override
 				public void onItemClick(AdapterView<?> list, View view, int position, long id) {
 					// Get the cursor, positioned to the corresponding row in the result set
-					position = position+1;
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
@@ -3202,7 +3218,6 @@ ActionBar.TabListener {
 				@Override
 				public void onItemClick(AdapterView<?> list, View view, int position, long id) {
 					// Get the cursor, positioned to the corresponding row in the result set
-					position = position+1;
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
@@ -3950,7 +3965,6 @@ ActionBar.TabListener {
 				@Override
 				public void onItemClick(AdapterView<?> list, View view, int position, long id) {
 					// Get the cursor, positioned to the corresponding row in the result set
-					position = position+1;
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
