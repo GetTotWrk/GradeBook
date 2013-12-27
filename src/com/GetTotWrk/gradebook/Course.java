@@ -259,7 +259,7 @@ public class Course {
 		courseone.update(TABLE_NAME2, initialValues, C_ID + "=?", new String[] { string });
 	}
 //Update table based on user defined arguements, adds raw and recieved score
-	public void tableupdate(Cursor cursor,Double rawscore, Double totalscore) {
+	public void tableupdate(String whereArgs, Double rawscore, Double totalscore) {
 		// TODO Auto-generated method stub
 		Log.w(TAG, "STARTED UPDATE VALUES");
 
@@ -267,13 +267,10 @@ public class Course {
 		initialValues.put(SCORE, totalscore);
 		initialValues.put(RAW_SCORE, rawscore);
 		String where = "_id=?";
-		int id = cursor.getColumnIndexOrThrow("_id");
-		String testString = Double.toString(id);
-		Log.w(TAG, "ID: " + cursor.getString(cursor.getColumnIndexOrThrow("_id")));
+		Log.w(TAG, "ID: " + whereArgs);
 
-		String[] whereArgs = new String[] {cursor.getString(cursor.getColumnIndexOrThrow("_id"))};
-		Log.w(TAG, cursor.getString(cursor.getColumnIndexOrThrow("_id")));
-		courseone.update(TABLE_NAME, initialValues, where, whereArgs);
+		String[] whereArgsarray = new String[] {whereArgs};
+		courseone.update(TABLE_NAME, initialValues, where, whereArgsarray);
 	}
 
 	

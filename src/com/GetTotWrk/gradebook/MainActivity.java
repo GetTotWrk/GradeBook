@@ -36,6 +36,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -979,9 +980,13 @@ ActionBar.TabListener {
 				@Override
 				public void onItemClick(AdapterView<?> list, View view, int position, long id) {
 					// Get the cursor, positioned to the corresponding row in the result set
+					
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
+					Log.w(TAG, "ID: " + cursor2.getString(cursor2.getColumnIndexOrThrow("_id")));
+					final String whereArgs = cursor2.getString(cursor2.getColumnIndexOrThrow("_id"));
+					Log.w(TAG, "Confirm ID: " + whereArgs);
 
 					// TODO Auto-generated method stub
 					final Dialog custom = new Dialog(getActivity());
@@ -1024,10 +1029,10 @@ ActionBar.TabListener {
 							{
 								//course.createAssignment(text, text2, text3);
 								//Toast.makeText(getActivity(), "DATA SAVED" + text + text2 + text3, Toast.LENGTH_SHORT).show();
-								Log.w(TAG, "Rawscore: " + text3);
-								Log.w(TAG, "Total score: " + text2);
+								//Log.w(TAG, "Rawscore: " + text3);
+								//Log.w(TAG, "Total score: " + text2);
 
-								course.tableupdate(cursor2, totalscoredouble,rawscoredouble);
+								course.tableupdate(whereArgs, totalscoredouble,rawscoredouble);
 
 								custom.dismiss();
 
@@ -1050,6 +1055,20 @@ ActionBar.TabListener {
 				}
 
 
+			});
+			list.setOnItemLongClickListener(new OnItemLongClickListener(){
+
+				@Override
+				public boolean onItemLongClick(AdapterView<?> list, View view, int position, long id) {
+					// TODO Auto-generated method stub
+					
+					final Dialog custom2= new Dialog(getActivity());
+					custom2.setContentView(R.layout.dialog_editcourse);
+
+					custom2.show();
+					return true;
+				}
+				
 			});
 			
 			//Searching for different asssignment typs
@@ -1731,10 +1750,14 @@ ActionBar.TabListener {
 				@Override
 				public void onItemClick(AdapterView<?> list, View view, int position, long id) {
 					// Get the cursor, positioned to the corresponding row in the result set
+					
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
-
+					Log.w(TAG, "ID: " + cursor2.getString(cursor2.getColumnIndexOrThrow("_id")));
+					final String whereArgs = cursor2.getString(cursor2.getColumnIndexOrThrow("_id"));
+					Log.w(TAG, "Confirm ID: " + whereArgs);
+					
 					// TODO Auto-generated method stub
 					final Dialog custom = new Dialog(getActivity());
 					custom.setContentView(R.layout.dialog);
@@ -1779,7 +1802,7 @@ ActionBar.TabListener {
 								Log.w(TAG, "Rawscore: " + text3);
 								Log.w(TAG, "Total score: " + text2);
 
-								course.tableupdate(cursor2, totalscoredouble,rawscoredouble);
+								course.tableupdate(whereArgs, totalscoredouble,rawscoredouble);
 
 								custom.dismiss();}
 
@@ -2475,7 +2498,11 @@ ActionBar.TabListener {
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
-
+					Log.w(TAG, "ID: " + cursor2.getString(cursor2.getColumnIndexOrThrow("_id")));
+					final String whereArgs = cursor2.getString(cursor2.getColumnIndexOrThrow("_id"));
+					Log.w(TAG, "Confirm ID: " + whereArgs);
+					
+					
 					// TODO Auto-generated method stub
 					final Dialog custom = new Dialog(getActivity());
 					custom.setContentView(R.layout.dialog);
@@ -2520,7 +2547,7 @@ ActionBar.TabListener {
 								Log.w(TAG, "Rawscore: " + text3);
 								Log.w(TAG, "Total score: " + text2);
 
-								course.tableupdate(cursor2, totalscoredouble,rawscoredouble);
+								course.tableupdate(whereArgs, totalscoredouble,rawscoredouble);
 
 								custom.dismiss();
 
@@ -3221,7 +3248,11 @@ ActionBar.TabListener {
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
-
+					Log.w(TAG, "ID: " + cursor2.getString(cursor2.getColumnIndexOrThrow("_id")));
+					final String whereArgs = cursor2.getString(cursor2.getColumnIndexOrThrow("_id"));
+					Log.w(TAG, "Confirm ID: " + whereArgs);
+					
+					
 					// TODO Auto-generated method stub
 					final Dialog custom = new Dialog(getActivity());
 					custom.setContentView(R.layout.dialog);
@@ -3266,7 +3297,7 @@ ActionBar.TabListener {
 								Log.w(TAG, "Rawscore: " + text3);
 								Log.w(TAG, "Total score: " + text2);
 
-								course.tableupdate(cursor2, totalscoredouble,rawscoredouble);
+								course.tableupdate(whereArgs, totalscoredouble,rawscoredouble);
 
 								custom.dismiss();
 
@@ -3968,7 +3999,11 @@ ActionBar.TabListener {
 					Log.w(TAG, "Int position: " + Integer.toString(position));
 
 					final Cursor cursor2 = (Cursor) list.getItemAtPosition(position);
-
+					Log.w(TAG, "ID: " + cursor2.getString(cursor2.getColumnIndexOrThrow("_id")));
+					final String whereArgs = cursor2.getString(cursor2.getColumnIndexOrThrow("_id"));
+					Log.w(TAG, "Confirm ID: " + whereArgs);
+					
+					
 					// TODO Auto-generated method stub
 					final Dialog custom = new Dialog(getActivity());
 					custom.setContentView(R.layout.dialog);
@@ -4023,7 +4058,7 @@ ActionBar.TabListener {
 								Log.w(TAG, "Rawscore: " + text3);
 								Log.w(TAG, "Total score: " + text2);
 
-								course.tableupdate(cursor2, totalscoredouble,rawscoredouble);
+								course.tableupdate(whereArgs, totalscoredouble,rawscoredouble);
 
 								custom.dismiss();
 							}
